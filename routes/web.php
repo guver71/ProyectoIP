@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Livewire\CrudCrear;
+use App\Http\Livewire\CrudPostularoferta;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -25,4 +27,7 @@ Route::middleware([
     Route::get('/dashboard', function () {
         return view('dashboard');
     })->name('dashboard');
+
+    Route::get('/crear', CrudCrear::class)->name('crear');
+    //Route::get('/postularofertas', CrudPostularoferta::class)->name('postularofertas');
 });

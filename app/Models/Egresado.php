@@ -8,6 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class Egresado extends Model
 {
     use HasFactory;
+    
     public function user()
     {
         return $this->belongsTo(User::class);
@@ -19,5 +20,6 @@ class Egresado extends Model
     }
 
 }
+
 
 

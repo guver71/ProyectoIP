@@ -14,9 +14,50 @@
                 <x-input id="name" class="block mt-1 w-full" type="text" name="name" :value="old('name')" required autofocus autocomplete="name" />
             </div>
 
+            <div class="mt-4 col-span-10 sm:col-span-3">
+                <x-label for="paterno" value="{{ __('Apellido Paterno') }}" />
+                <x-input id="paterno" type="text" class="mt-1 block w-full" name="paterno" :value="old('paterno')" required autocomplete="paterno" />
+                <x-input-error for="paterno" class="mt-2" />
+            </div>
+
+            <div class="mt-4">
+                <x-label for="materno" value="{{ __('AP Materno') }}" />
+                <x-input id="materno" class="block mt-1 w-full" type="text" name="materno" :value="old('materno')" required autocomplete="materno" />
+            </div>
+
+            <div class="mt-4">
+                <x-label for="dni" value="{{ __('DNI') }}" />
+                <x-input id="dni" class="block mt-1 w-full" type="text" name="dni" :value="old('dni')" required autocomplete="dni" />
+            </div>
+
+            <div class="mt-4">
+                <x-label for="estado_civil" value="{{ __('Estado Civil') }}" />
+                <x-input id="estado_civil" class="block mt-1 w-full" type="text" name="estado_civil" :value="old('estado_civil')" required autocomplete="estado_civil" />
+            </div>
+
+            <div class="mt-4">
+                <x-label for="fecha_nacimiento" value="{{ __('Fecha Nacimiento') }}" />
+                <x-input id="fecha_nacimiento" class="block mt-1 w-full" type="date" name="fecha_nacimiento" :value="old('fecha_nacimiento')" required autocomplete="fecha_nacimiento" />
+            </div>
+
+            <div class="mt-4">
+                <x-label for="sexo" value="{{ __('Sexo-Genero') }}" />
+                <x-input id="sexo" class="block mt-1 w-full" type="text" name="sexo" :value="old('sexo')" required autocomplete="sexo" />
+            </div>
+
+            <div class="mt-4">
+                <x-label for="rol" value="{{ __('Rol') }}" />
+                <x-input id="rol" class="block mt-1 w-full" type="text" name="rol" :value="old('rol')" required autocomplete="rol" />
+            </div>
+
+            <div class="mt-4">
+                <x-label for="celular" value="{{ __('Celular') }}" />
+                <x-input id="celular" class="block mt-1 w-full" type="text" name="celular" :value="old('celular')" required autocomplete="celular" />
+            </div>
+
             <div class="mt-4">
                 <x-label for="email" value="{{ __('Email') }}" />
-                <x-input id="email" class="block mt-1 w-full" type="email" name="email" :value="old('email')" required autocomplete="username" />
+                <x-input id="email" class="block mt-1 w-full" type="email" name="email" :value="old('email')" required autocomplete="email" />
             </div>
 
             <div class="mt-4">
@@ -29,56 +70,16 @@
                 <x-input id="password_confirmation" class="block mt-1 w-full" type="password" name="password_confirmation" required autocomplete="new-password" />
             </div>
 
-            <div class="mt-4">
-                <x-label for="paterno" value="{{ __('AP Paterno') }}" />
-                <x-input id="paterno" class="block mt-1 w-full" type="text" name="paterno" required autocomplete="new-paterno" />
-            </div>
-
-            <div class="mt-4">
-                <x-label for="materno" value="{{ __('AP Materno') }}" />
-                <x-input id="materno" class="block mt-1 w-full" type="text" name="materno" required autocomplete="new-materno" />
-            </div>
-
-            <div class="mt-4">
-                <x-label for="dni" value="{{ __('DNI') }}" />
-                <x-input id="dni" class="block mt-1 w-full" type="text" name="dni" required autocomplete="new-dni" />
-            </div>
-
-            <div class="mt-4">
-                <x-label for="estado_civil" value="{{ __('Estado Civil') }}" />
-                <x-input id="estado_civil" class="block mt-1 w-full" type="text" name="estado_civil" required autocomplete="new-estado_civil" />
-            </div>
-
-            <div class="mt-4">
-                <x-label for="fecha_nacimiento" value="{{ __('Fecha Nacimiento') }}" />
-                <x-input id="fecha_nacimiento" class="block mt-1 w-full" type="text" name="fecha_nacimiento" required autocomplete="new-fecha_nacimiento" />
-            </div>
-
-            <div class="mt-4">
-                <x-label for="sexo" value="{{ __('Sexo-Genero') }}" />
-                <x-input id="sexo" class="block mt-1 w-full" type="text" name="sexo" required autocomplete="new-sexo" />
-            </div>
-
-            <div class="mt-4">
-                <x-label for="rol" value="{{ __('Rol') }}" />
-                <x-input id="rol" class="block mt-1 w-full" type="text" name="rol" required autocomplete="new-rol" />
-            </div>
-
-            <div class="mt-4">
-                <x-label for="celular" value="{{ __('Celular') }}" />
-                <x-input id="celular" class="block mt-1 w-full" type="text" name="celular" required autocomplete="new-celular" />
-            </div>
-
             @if (Laravel\Jetstream\Jetstream::hasTermsAndPrivacyPolicyFeature())
                 <div class="mt-4">
                     <x-label for="terms">
                         <div class="flex items-center">
-                            <x-checkbox name="terms" id="terms" required />
+                            <x-checkbox id="terms" name="terms" required />
 
                             <div class="ml-2">
                                 {!! __('I agree to the :terms_of_service and :privacy_policy', [
-                                        'terms_of_service' => '<a target="_blank" href="'.route('terms.show').'" class="underline text-sm text-gray-600 hover:text-gray-900 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">'.__('Terms of Service').'</a>',
-                                        'privacy_policy' => '<a target="_blank" href="'.route('policy.show').'" class="underline text-sm text-gray-600 hover:text-gray-900 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">'.__('Privacy Policy').'</a>',
+                                        'terms_of_service' => '<a target="_blank" href="'.route('terms.show').'" class="underline text-sm text-gray-600 hover:text-gray-900 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">'._('Terms of Service').'</a>',
+                                        'privacy_policy' => '<a target="_blank" href="'.route('policy.show').'" class="underline text-sm text-gray-600 hover:text-gray-900 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">'._('Privacy Policy').'</a>',
                                 ]) !!}
                             </div>
                         </div>
