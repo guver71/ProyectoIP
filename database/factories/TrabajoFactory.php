@@ -27,11 +27,11 @@ class TrabajoFactory extends Factory
         'requiere_experiencia' => $this->faker->randomElement(['Sí', 'No']),
         'modalidad_tiempo' => $this->faker->randomElement(['Tiempo completo', 'Medio tiempo']),
         'beneficios' => $this->faker->sentence,
-        'datos_contacto' => $this->faker->name . ' - ' . $this->faker->phoneNumber,
+        'datos_contacto' => $this->faker->phoneNumber,
         'titulo' => $this->faker->sentence,
         'antecedentes' => $this->faker->sentence,
         'estado' => $this->faker->randomElement(['Activo', 'Inactivo']),
-        'Empresa_id'=>Empresa::all()->random()->id,
+        'empresa_id'=>Empresa::all()->random()->id,
         ];
     }
 }

@@ -4,6 +4,7 @@ namespace App\Http\Livewire;
 
 use App\Models\Graduate;
 use App\Models\Crear;
+use App\Models\Empresa;
 use App\Models\Trabajo;
 use Livewire\Component;
 use Illuminate\Support\Str;
@@ -11,10 +12,8 @@ use Illuminate\Support\Str;
 class CrudCrear extends Component{
 
     public $isOpen=false;
-    public $ruteCreate=false;
-
-    public $search,$crear;
-    protected $listeners=['render','delete'=>'delete'];
+    public $search;
+    public $crear;
 
     protected $rules=[
         'crear.fecha_publication' =>'required',
@@ -30,21 +29,36 @@ class CrudCrear extends Component{
         'crear.titulo' =>'required',
         'crear.antecedentes' =>'required',
         'crear.estado' =>'required',
-        'crear.Empresa_id'=>'required',
-
-
+        'crear.empresa_id'=>'required',
     ];
+    public function messages(){
+        return [
+            'crear.fecha_publication' =>'Bien hecho',
+            'crear.categoria' =>'Bien hecho',
+            'crear.description' =>'Bien hecho',
+            'crear.salario' =>'Bien hecho',
+            'crear.fecha_inicio' =>'Bien hecho',
+            'crear.fecha_fin' =>'Bien hecho',
+            'crear.requiere_experiencia' =>'Bien hecho',
+            'crear.modalidad_tiempo' =>'Bien hecho',
+            'crear.beneficios' =>'Bien hecho',
+            'crear.datos_contacto' =>'Bien hecho',
+            'crear.titulo' =>'Bien hecho',
+            'crear.antecedentes' =>'Bien hecho',
+            'crear.estado' =>'Bien hecho',
+            'crear.empresa_id'=>'Bien hecho',
+        ];
+    }
 
     public function render(){
         $crears=Trabajo::where('fecha_publication','LIKE','%'.$this->search.'%')->latest('id')->paginate(6);
         //$graduates = Graduate::all();
-        return view('livewire.crud-crear',compact('crears'));
+        $empresas = Empresa::all();
+        return view('livewire.crud-crear',compact('crears', 'empresas'));
     }
 
     public function create(){
         $this->isOpen=true;
-        $this->ruteCreate=true;
-        $this->reset('crear');
     }
 
     public function store(){
@@ -66,21 +80,21 @@ class CrudCrear extends Component{
             $crear->titulo=$this->crear['titulo'];
             $crear->antecedentes=$this->crear['antecedentes'];
             $crear->estado=$this->crear['estado'];
-            $crear->Empresa_id=$this->crear['Empresa_id'];
+            $crear->empresa_id=$this->crear['empresa_id'];
             $crear->save();
         }
         $this->reset(['isOpen','crear']);
         $this->emitTo('CrudCrear','render');
-    }
-
-    public function delete(Trabajo $item){
-        $item->delete();
+        $this->emit('alert','Registro creado satisfactoriamente');
     }
 
     public function edit($crear){
+        //dd($crear);
         $this->crear=$crear;
-        //dd($this->crear);
         $this->isOpen=true;
     }
 
+    public function delete($id){
+        Trabajo::find($id)->delete();
+    }
 }

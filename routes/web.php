@@ -3,6 +3,7 @@
 use App\Http\Livewire\CrudCrear;
 use App\Http\Livewire\CrudPostularoferta;
 use Illuminate\Support\Facades\Route;
+use App\Http\Livewire\CrudPostular;
 
 /*
 |--------------------------------------------------------------------------
@@ -28,6 +29,6 @@ Route::middleware([
         return view('dashboard');
     })->name('dashboard');
 
-    Route::get('/crear', CrudCrear::class)->name('crear');
-    //Route::get('/postularofertas', CrudPostularoferta::class)->name('postularofertas');
+    Route::get('/crears', CrudCrear::class)->name('crears');
+    Route::get('/postulars', CrudPostular::class)->name('postulars');
 });
