@@ -31,24 +31,6 @@ class CrudCrear extends Component{
         'crear.estado' =>'required',
         'crear.empresa_id'=>'required',
     ];
-    public function messages(){
-        return [
-            'crear.fecha_publication' =>'Bien hecho',
-            'crear.categoria' =>'Bien hecho',
-            'crear.description' =>'Bien hecho',
-            'crear.salario' =>'Bien hecho',
-            'crear.fecha_inicio' =>'Bien hecho',
-            'crear.fecha_fin' =>'Bien hecho',
-            'crear.requiere_experiencia' =>'Bien hecho',
-            'crear.modalidad_tiempo' =>'Bien hecho',
-            'crear.beneficios' =>'Bien hecho',
-            'crear.datos_contacto' =>'Bien hecho',
-            'crear.titulo' =>'Bien hecho',
-            'crear.antecedentes' =>'Bien hecho',
-            'crear.estado' =>'Bien hecho',
-            'crear.empresa_id'=>'Bien hecho',
-        ];
-    }
 
     public function render(){
         $crears=Trabajo::where('fecha_publication','LIKE','%'.$this->search.'%')->latest('id')->paginate(6);
